@@ -31,7 +31,15 @@ public class JavaCLI {
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println("response ====> " + response.body());
+        System.out.println("""
+        
+                        
+                        """ + response.body() + """
+                        
+                        Someone will be in touch shortly to follow up on your issue
+
+
+                        """);
 
     }
 

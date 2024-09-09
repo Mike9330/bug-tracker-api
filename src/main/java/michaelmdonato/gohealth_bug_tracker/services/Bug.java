@@ -4,7 +4,7 @@ package michaelmdonato.gohealth_bug_tracker.services;
 import java.sql.Date;
 
 public class Bug {
-    private long id, parentId;
+    private String id;
     String description, status, link;
     Date timestamp;
 
@@ -22,7 +22,7 @@ public class Bug {
     public String getLink(){ return this.link; }
 
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
     public void setStatus(String status) {

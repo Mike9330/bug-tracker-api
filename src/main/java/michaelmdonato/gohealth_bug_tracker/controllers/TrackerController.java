@@ -23,14 +23,4 @@ public class TrackerController {
             return ResponseEntity.status(500).body("Error adding: " + e.getMessage());
         }
     }
-
-//    @GetMapping("/getAll")
-//    public ResponseEntity<String> getAllBugs(@RequestBody Bug bug) {
-//        try {
-//            service.getAllBugs();
-//            return ResponseEntity.ok("Bug added successfully");
-//        } catch (IOException e) {
-//            return ResponseEntity.status(500).body("Error adding: " + e.getMessage());
-//        }
-//    }
 }
