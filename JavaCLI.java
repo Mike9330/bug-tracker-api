@@ -58,25 +58,20 @@ public class JavaCLI {
 
     }
 
-    public static void updateBug(String id) throws IOException, InterruptedException {
-        Scanner reader = new Scanner(System.in);
-        System.out.print("Would you like to close this bug?(y/n): ");
-        String answer = reader.nextLine();
-
-        if (answer.equals("y")) {
-            String baseURL = "http://localhost:8080/closeBug/";
-            String fullURL = baseURL.concat(id);
+    public static void closeBug(String id) throws IOException, InterruptedException {
+        String baseURL = "http://localhost:8080/closeBug/";
+        String fullURL = baseURL.concat(id);
 
 
-            HttpRequest request = HttpRequest.newBuilder()
-                    .GET()
-                    .uri(URI.create(fullURL))
-                    .build();
+        HttpRequest request = HttpRequest.newBuilder()
+                .GET()
+                .uri(URI.create(fullURL))
+                .build();
 
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-            if (response.statusCode() == 200) {
-                System.out.println("""
+        if (response.statusCode() == 200) {
+            System.out.println("""
         
                         
                         """ + response.body() + """
@@ -85,8 +80,8 @@ public class JavaCLI {
 
 
                         """);
-            } else {
-                System.out.println("""
+        } else {
+            System.out.println("""
         
                         
                         
@@ -95,7 +90,7 @@ public class JavaCLI {
 
                         """);
             }
-        }
+
 
     }
 
@@ -106,15 +101,15 @@ public class JavaCLI {
 
 
         while (!response.equals("exit")) {
-            System.out.print("Please enter 'new' to create new bug or 'update' to edit an existing one (or exit to quit CLI): ");
+            System.out.print("Please enter 'new' to create new bug or 'close' to close an existing one (or exit to quit CLI): ");
             response = reader.next();
 
             if (response.equals("new")) {
                 addbug();
-            } else if (response.equals("update")) {
-                System.out.print("Please enter the ID of the bug you'd like to update: ");
+            } else if (response.equals("close")) {
+                System.out.print("Please enter the ID of the bug you'd like to close: ");
                 response = reader.next();
-                updateBug(response);
+                closeBug(response);
 
             } else if (!response.equals("exit")) {
                 System.out.println("""
