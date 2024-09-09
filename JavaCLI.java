@@ -31,7 +31,10 @@ public class JavaCLI {
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println("""
+        System.out.println("full response =====> " + response.statusCode());
+
+        if (response.statusCode() == 200) {
+            System.out.println("""
         
                         
                         """ + response.body() + """
@@ -40,6 +43,59 @@ public class JavaCLI {
 
 
                         """);
+        } else {
+            System.out.println("""
+        
+                        
+                        
+                        There was an issue creating your bug
+
+
+                        """);
+        }
+
+
+
+    }
+
+    public static void updateBug(String id) throws IOException, InterruptedException {
+        Scanner reader = new Scanner(System.in);
+        System.out.print("Would you like to close this bug?(y/n): ");
+        String answer = reader.nextLine();
+
+        if (answer.equals("y")) {
+            String baseURL = "http://localhost:8080/closeBug/";
+            String fullURL = baseURL.concat(id);
+
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .GET()
+                    .uri(URI.create(fullURL))
+                    .build();
+
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() == 200) {
+                System.out.println("""
+        
+                        
+                        """ + response.body() + """
+                        
+                        Thank you for using the GoHealth Bug Tracking system
+
+
+                        """);
+            } else {
+                System.out.println("""
+        
+                        
+                        
+                        There was an issue creating your bug
+
+
+                        """);
+            }
+        }
 
     }
 
@@ -58,6 +114,7 @@ public class JavaCLI {
             } else if (response.equals("update")) {
                 System.out.print("Please enter the ID of the bug you'd like to update: ");
                 response = reader.next();
+                updateBug(response);
 
             } else if (!response.equals("exit")) {
                 System.out.println("""

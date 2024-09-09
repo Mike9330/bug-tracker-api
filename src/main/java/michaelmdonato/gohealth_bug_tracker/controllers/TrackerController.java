@@ -23,4 +23,10 @@ public class TrackerController {
             return ResponseEntity.status(500).body("Error adding: " + e.getMessage());
         }
     }
+
+    @RequestMapping("/closeBug/{id}")
+    public ResponseEntity<String> closeBug(@PathVariable String id) throws IOException {
+        service.closeBug(id);
+        return ResponseEntity.ok("Bug has been closed");
+    }
 }
