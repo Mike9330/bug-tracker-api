@@ -1,5 +1,6 @@
 # bug-tracker
-Hello, and welcome to the GoHealth Bug Tracker API. This project consists of two main parts. Here, we'll go over how to run them together.
+Hello, and welcome to the GoHealth Bug Tracker API. This project consists of two main parts. Here, we'll go over how to run them together. 
+Note that the Spring Boot API may be run without the JavaCLI, but the JavaCLI cannot be run without the Spring Boot API
 
 1. Spring Boot Application 
    -

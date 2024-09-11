@@ -22,12 +22,15 @@ public class TrackerService {
     public void addBug(String description, String link) throws IOException {
         Bug bug = new Bug(description, link);
 
+        //Adds new iterated id to the new bug
         bug.setId(String.valueOf(nextId++));
         long currentTimeInMillis = System.currentTimeMillis();
 
+        // Sets date of new bug to current time
         Date currentDate = new Date(currentTimeInMillis);
         bug.setTimestamp(currentDate);
 
+        //Calls filewriter service to add bug to file
         this.writer.addBug(bug, fileName);
     }
 
@@ -37,6 +40,8 @@ public class TrackerService {
         File newFile = new File(tempFile);
         String id; String desc; String status; String timeStamp; String link;
 
+        //Trys to scan file in search of bug to close. If found, status is written to temp file as 'closed'
+        // The previous file is then deleted and the new temp file is renamed to bugtracker.csv
         try {
             FileWriter writer = new FileWriter(tempFile,true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
