@@ -6,7 +6,7 @@ Hello, and welcome to the GoHealth Bug Tracker API. This project consists of two
       This application is mainly in Java 17 using the Spring Boot framework, and ran in gradle. 
       - After downloading, simply navigate in your terminal to the main project folder (gohealth-bug-tracker)
       - Please be sure that you have Java installed by running "java -version"
-        - if you do not have java installed, please install it here (https://www.java.com/en/download/help/download_options.html)
+        - if you do not have java installed, please install it here (https://www.oracle.com/java/technologies/downloads/)
       - Since the gradlew file is already present in this project, you are not required to download gradle (although if you want to, you can do so here: https://gradle.org/install/)
       - At the home directory of the project, run "./gradlew bootRun" in your terminal
 2. Docker
