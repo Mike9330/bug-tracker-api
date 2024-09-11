@@ -4,7 +4,6 @@ import michaelmdonato.gohealth_bug_tracker.Bug;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.util.Scanner;
 
 @Service
 public class CSVService {

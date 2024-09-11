@@ -1,7 +1,5 @@
 package michaelmdonato.gohealth_bug_tracker.servicetests;
 
-
-import com.opencsv.CSVParser;
 import michaelmdonato.gohealth_bug_tracker.Bug;
 import michaelmdonato.gohealth_bug_tracker.services.CSVService;
 import michaelmdonato.gohealth_bug_tracker.services.TrackerService;
@@ -12,9 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
