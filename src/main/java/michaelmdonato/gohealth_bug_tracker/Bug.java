@@ -1,4 +1,4 @@
-package michaelmdonato.gohealth_bug_tracker.services;
+package michaelmdonato.gohealth_bug_tracker;
 
 
 import java.sql.Date;

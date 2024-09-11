@@ -31,8 +31,6 @@ public class JavaCLI {
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println("full response =====> " + response.statusCode());
-
         if (response.statusCode() == 200) {
             System.out.println("""
         

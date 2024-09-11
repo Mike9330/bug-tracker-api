@@ -17,7 +17,7 @@ public class TrackerController {
     @RequestMapping("/addBug/{description}/{link}")
     public ResponseEntity<String> addBug(@PathVariable String description, @PathVariable String link) {
         try {
-            service.newBug(description, link);
+            service.addBug(description, link);
             return ResponseEntity.ok("Bug added successfully");
         } catch (IOException e) {
             return ResponseEntity.status(500).body("Error adding: " + e.getMessage());

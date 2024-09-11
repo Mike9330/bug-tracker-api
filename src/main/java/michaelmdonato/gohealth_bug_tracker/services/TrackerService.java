@@ -1,21 +1,25 @@
 package michaelmdonato.gohealth_bug_tracker.services;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVWriter;
+import michaelmdonato.gohealth_bug_tracker.Bug;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.sql.Date;
-import java.util.List;
 import java.util.Scanner;
 
 @Service
 public class TrackerService {
 
-    private long nextId = 1L;
+    private final CSVService writer;
 
-    private String fileName = "bugtracker.csv";
+    public long nextId = 1L;
 
-    public void newBug(String description, String link) throws IOException {
+    private final String fileName = "bugtracker.csv";
+
+    public TrackerService(CSVService writer) {
+        this.writer = writer;
+    }
+
+    public void addBug(String description, String link) throws IOException {
         Bug bug = new Bug(description, link);
 
         bug.setId(String.valueOf(nextId++));
@@ -24,12 +28,7 @@ public class TrackerService {
         Date currentDate = new Date(currentTimeInMillis);
         bug.setTimestamp(currentDate);
 
-        PrintWriter out = new PrintWriter(new FileWriter(fileName, true));
-        bug.setStatus("open");
-
-        out.printf("%s, %s, %s, %s, %s\n", bug.getId(), bug.getDescription(), bug.getStatus(), bug.getTimestamp(), bug.getLink());
-
-        out.close();
+        this.writer.addBug(bug, fileName);
     }
 
     public void closeBug(String idToChange) throws IOException {
